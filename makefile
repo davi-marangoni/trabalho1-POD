@@ -8,7 +8,7 @@ CC = gcc
 CFLAGS = -Wall -g
 
 # Arquivos fonte
-SRC = main.c lista.c
+SRC = main.c lista.c bubblesort.c
 
 # Arquivos objeto (gerados a partir dos arquivos fonte)
 OBJ = $(SRC:.c=.o)
@@ -21,7 +21,7 @@ $(EXEC): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
 # Regra para compilar os arquivos objeto
-%.o: %.c lista.h
+%.o: %.c lista.h bubblesort.h
 	$(CC) $(CFLAGS) -c $<
 
 # Regra de limpeza

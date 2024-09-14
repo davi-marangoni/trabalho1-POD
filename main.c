@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lista.h"
+#include "bubblesort.h"
 
 int main() {
     //inicia o array original
@@ -19,7 +20,13 @@ int main() {
     struct tlist array2[10];
     insertListInArray(&l, array2, 10);
 
+    //ordenando o array
+    bubblesort(array2, 10);
 
+    //imprimindo o array ordenado pelo bubblesort
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", array2[i].valor);
+    }
 
 
     return 0;
