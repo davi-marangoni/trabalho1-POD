@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include "lista.h"
 
-void initList(struct list* l){
+void initList(struct list* l) {
     l->head = NULL;
     l->tail = NULL;
 }
 
-void insertList(struct list* l, int valor){
+void insertList(struct list* l, int valor) {
     struct tlist* novo = (struct tlist*) malloc(sizeof(struct tlist));
     novo->valor = valor;
     novo->next = NULL;
@@ -20,11 +20,19 @@ void insertList(struct list* l, int valor){
     }
 }
 
-void printList(struct list* l){
+void printList(struct list* l) {
     struct tlist* aux = l->head;
     while(aux != NULL){
         printf("%d ", aux->valor);
         aux = aux->next;
     }
     printf("\n");
+}
+
+void insertListInArray(struct list* l, struct tlist* array, int size) {
+    struct tlist* aux = l->head;
+    for (int i = 0; i < size; i++) {
+        array[i] = *aux;
+        aux = aux->next;
+    }
 }

@@ -11,3 +11,4 @@ struct list {
 void initList(struct list* l);
 void insertList(struct list *l, int valor);
 void printList(struct list* l);
+void insertListInArray(struct list* l, struct tlist* array, int size);
