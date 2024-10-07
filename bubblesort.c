@@ -3,25 +3,24 @@
 #include "lista.h"
 #include "bubblesort.h"
 
-void bubblesort(struct tlist* array, int size) {
+// implementacao do bubblesort
+void bubblesort(struct tlist* array, int tamanho) {
+
     int flag = 0;
-    for (int i = 0; i < size; i++) {
+
+    for (int i = 0; i < tamanho; i++) {
         flag = 0;
-        for (int j = 0; j < size - 1; j++) {
+
+        for (int j = 0; j < tamanho - 1; j++) {
             if (array[j].valor > array[j + 1].valor) {
-                change(&array[j], &array[j + 1]);
+                trocar(&array[j], &array[j + 1]);
                 flag = 1;
             }
         }
-        if (flag == 0) {
+
+        if (flag == 0) {    
             break;
         }
+
     }
-}
-
-
-void change(struct tlist* a, struct tlist* b) {
-    struct tlist aux = *a;
-    *a = *b;
-    *b = aux;
 }

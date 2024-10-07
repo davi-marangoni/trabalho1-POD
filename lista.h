@@ -8,7 +8,8 @@ struct list {
     struct tlist* tail;
 };
 
-void initList(struct list* l);
-void insertList(struct list *l, int valor);
-void printList(struct list* l);
-void insertListInArray(struct list* l, struct tlist* array, int size);
+void initLista(struct list* l);
+void inserirNaLista(struct list *l, int valor);
+void printarLista(struct list* l);
+void inserirListaNoArray(struct list* l, struct tlist* array, int tamanho);
+void trocar(struct tlist* a, struct tlist* b);
