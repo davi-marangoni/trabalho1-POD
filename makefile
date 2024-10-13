@@ -1,33 +1,33 @@
-# Nome do executável
+#nome do executavel
 EXEC = trabalho
 
-# Compilador
+#compilador
 CC = gcc
 
-# Flags do compilador
+#flags do compilador
 CFLAGS = -Wall -g
 
-# Arquivos fonte
-SRC = main.c lista.c bubblesort.c quicksort.c
+#fontes
+SRC = main.c lista.c bubblesort.c quicksort.c radixsort.c fila.c
 
-# Arquivos objeto (gerados a partir dos arquivos fonte)
+#arquivos objeto (gerados a partir dos fontes)
 OBJ = $(SRC:.c=.o)
 
-# Regra padrão
+#regra padrao
 all: $(EXEC)
 
-# Regra para compilar o executável
+#regra para compilar o executavel
 $(EXEC): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
-# Regra para compilar os arquivos objeto
-%.o: %.c lista.h bubblesort.h quicksort.h
+#regra para compilar os arquivos objeto
+%.o: %.c %.h
 	$(CC) $(CFLAGS) -c $<
 
-# Regra de limpeza
+#regra de limpeza
 clean:
 	rm -f $(OBJ) $(EXEC)
 
-# Regra de limpeza completa (inclui arquivos de backup)
+#regra de limpeza completa (inclui arquivos de backup)
 distclean: clean
 	rm -f *~ *.bak

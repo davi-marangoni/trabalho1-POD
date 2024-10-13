@@ -3,48 +3,97 @@
 #include "lista.h"
 #include "bubblesort.h"
 #include "quicksort.h"
+#include "radixsort.h"
+#include "fila.h"
 
 int main() {
     //inicia o array original
     int array[10] = {23,65,2,4,56,43,12,45,78,34};
 
-    //iniciando a lista
+    //tamanho do array original
+    int tamanho = sizeof(array)/sizeof(array[0]);
+
+    //inicia a lista original
     struct list l;
     initLista(&l);
 
-    //transformando o array em uma lista
-    for (int i = 0; i < 10; i++) {
+    //insere os elementos do array em uma lista
+    for (int i = 0; i < tamanho; i++) {
         inserirNaLista(&l, array[i]);
     }
+    
+    //------------------------------------------------------------------
+    //                          bubblesort
+    //------------------------------------------------------------------
 
-    //copiando os elementos da lista para o array que sera ordenado
-    struct tlist array2[10];
-    inserirListaNoArray(&l, array2, 10);
+    //copia os elementos da lista para o array que sera ordenado no bubblesort
+    struct tlist arrayBubbleSort[tamanho];
+    inserirListaNoArray(&l, arrayBubbleSort, tamanho);
 
-    //ordenando o array
-    bubblesort(array2, 10);
+    //ordena o array
+    bubblesort(arrayBubbleSort, tamanho);
 
-    //imprimindo o array ordenado pelo bubblesort
-    for (int i = 0; i < 10; i++) {
-        printf("%d ", array2[i].valor);
+    //inicia fila do bubblesort
+    struct queue filaBubbleSort;
+    iniciarFila(&filaBubbleSort);
+
+    //insere os elementos ordenados no array na fila
+    for (int i = 0; i < tamanho; i++) {
+        inserirElementos(&filaBubbleSort, arrayBubbleSort[i].valor);
     }
 
-    printf("\n");
 
-    //copiando os elementos da lista para o array que sera ordenado
-    inserirListaNoArray(&l, array2, 10);
+    //------------------------------------------------------------------
+    //                          quicksort
+    //------------------------------------------------------------------
 
-    //ordenando o array
-    quicksort(array2, 10);
+    //copia os elementos da lista para o array que sera ordenado no quicksort
+    struct tlist arrayQuickSort[tamanho];
+    inserirListaNoArray(&l, arrayQuickSort, tamanho);
 
-    //imprimindo o array ordenado pelo quicksort
-    for (int i = 0; i < 10; i++) {
-        printf("%d ", array2[i].valor);
+    //ordena o array
+    quicksort(arrayQuickSort, tamanho);
+
+    //inicia fila do quicksort
+    struct queue filaQuickSort;
+    iniciarFila(&filaQuickSort);
+
+    //insere os elementos ordenados no array na fila
+    for (int i = 0; i < tamanho; i++) {
+        inserirElementos(&filaQuickSort, arrayQuickSort[i].valor);
     }
 
-    printf("\n");
 
+    //------------------------------------------------------------------
+    //                          radixsort
+    //------------------------------------------------------------------
 
+    //copia os elementos da lista para o array que sera ordenado
+    struct tlist arrayRadixSort[tamanho];
+    inserirListaNoArray(&l, arrayRadixSort, tamanho);
+
+    //ordena o array
+    radixSort(arrayRadixSort, tamanho);
+
+    //inicia fila do radixsort
+    struct queue filaRadixSort;
+    iniciarFila(&filaRadixSort);
+
+    //insere os elementos ordenados no array na fila
+    for (int i = 0; i < tamanho; i++) {
+        inserirElementos(&filaRadixSort, arrayRadixSort[i].valor);
+    }
+
+    //------------------------------------------------------------------
+    //                    Printa Filas Ordenadas
+    //------------------------------------------------------------------
+
+    printf("Fila da ordenacao realizada pelo bubblesort: \n");
+    imprimirFila(&filaBubbleSort);
+    printf("Fila da ordenacao realizada pelo quicksort: \n");
+    imprimirFila(&filaQuickSort);
+    printf("Fila da ordenacao realizada pelo radixsort: \n");
+    imprimirFila(&filaRadixSort);
 
     return 0;
 }

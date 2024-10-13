@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include "lista.h"
 
-// funcao para iniciar a lista
+//inicia a lista
 void initLista(struct list* l) {
     l->head = NULL;
     l->tail = NULL;
 }
 
-// funcao para inserir elemento na lista
+//insere elemento na lista
 void inserirNaLista(struct list* l, int valor) {
     struct tlist* novo = (struct tlist*) malloc(sizeof(struct tlist));
     novo->valor = valor;
@@ -22,7 +22,7 @@ void inserirNaLista(struct list* l, int valor) {
     }
 }
 
-// funcao para printar a lista
+//printa a lista
 void printarLista(struct list* l) {
     struct tlist* aux = l->head;
     while(aux != NULL){
@@ -32,7 +32,7 @@ void printarLista(struct list* l) {
     printf("\n");
 }
 
-// funcao para inserir a lista em um array
+//insere a lista em um array
 void inserirListaNoArray(struct list* l, struct tlist* array, int tamanho) {
     struct tlist* aux = l->head;
     for (int i = 0; i < tamanho; i++) {
@@ -41,7 +41,7 @@ void inserirListaNoArray(struct list* l, struct tlist* array, int tamanho) {
     }
 }
 
-// funcao para realizar a troca de posicao dos elementos
+//troca a posicao dos elementos
 void trocar(struct tlist* a, struct tlist* b) {
     struct tlist aux = *a;
     *a = *b;
