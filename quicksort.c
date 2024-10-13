@@ -6,7 +6,7 @@
 
 //funcao principal do quicksort
 void quicksort(struct tlist* array, int tamanho) {
-    //gerador de numeros aleatorios
+    //gerador de numeros aleatorios utilizando o tempo atual como seed
     srand(time(NULL));
     quicksortRecursivo(array, 0, tamanho - 1);
 }
